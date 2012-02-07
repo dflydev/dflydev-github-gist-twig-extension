@@ -52,6 +52,14 @@ class GistTwigExtension extends \Twig_Extension
     }
 
     /**
+     * {@inheritdoc }
+     */
+    public function getName()
+    {
+        return 'gitHubGist';
+    }
+
+    /**
      * Get the HTML content for a GitHub gist
      * @param string $id
      * @param string $file
@@ -92,13 +100,5 @@ class GistTwigExtension extends \Twig_Extension
         }
         $output .= '</noscript>';
         return $output;
-    }
-
-    /**
-     * {@inheritdoc }
-     */
-    public function getName()
-    {
-        return 'gitHubGist';
     }
 }
