@@ -1,0 +1,9 @@
+{
+    "hash": "7324287743ae68d22d1cca16cb98cb66",
+    "packages": [
+        {
+            "package": "twig\/twig",
+            "version": "1.7.0-dev"
+        }
+    ]
+}

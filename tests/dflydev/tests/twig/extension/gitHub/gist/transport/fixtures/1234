@@ -1,0 +1,51 @@
+{
+  "forks": [
+
+  ],
+  "url": "https://api.github.com/gists/1757612",
+  "description": "Sample Gist",
+  "public": true,
+  "files": {
+    "simple.txt": {
+      "type": "text/plain",
+      "raw_url": "https://gist.github.com/raw/1757612/5e1c309dae7f45e0f39b1bf3ac3cd9db12e7d689/simple.txt",
+      "content": "Hello World",
+      "size": 11,
+      "filename": "simple.txt",
+      "language": "Text"
+    }
+  },
+  "git_pull_url": "git://gist.github.com/1757612.git",
+  "history": [
+    {
+      "url": "https://api.github.com/gists/1757612/def2c5bec07d1408b230d3f5aa213d47e8196ee1",
+      "committed_at": "2012-02-07T06:15:08Z",
+      "change_status": {
+        "deletions": 0,
+        "total": 1,
+        "additions": 1
+      },
+      "user": {
+        "url": "https://api.github.com/users/simensen",
+        "gravatar_id": "23d971deeb3975a7d28246192fbbe7b7",
+        "login": "simensen",
+        "avatar_url": "https://secure.gravatar.com/avatar/23d971deeb3975a7d28246192fbbe7b7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+        "id": 191200
+      },
+      "version": "def2c5bec07d1408b230d3f5aa213d47e8196ee1"
+    }
+  ],
+  "git_push_url": "git@gist.github.com:1757612.git",
+  "comments": 0,
+  "updated_at": "2012-02-07T06:15:08Z",
+  "user": {
+    "url": "https://api.github.com/users/simensen",
+    "gravatar_id": "23d971deeb3975a7d28246192fbbe7b7",
+    "login": "simensen",
+    "avatar_url": "https://secure.gravatar.com/avatar/23d971deeb3975a7d28246192fbbe7b7?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png",
+    "id": 191200
+  },
+  "html_url": "https://gist.github.com/1757612",
+  "id": "1757612",
+  "created_at": "2012-02-07T06:15:08Z"
+}

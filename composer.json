@@ -1,0 +1,29 @@
+{
+    "name": "dflydev/github-gist-twig-extension",
+    "type": "library",
+    "description": "GitHub Gist Twig Extension",
+    "homepage": "http://github.com/dflydev/dflydev-gitHub-gist-twig-extension",
+    "keywords": ["github", "gist", "twig", "extension"],
+    "license": "New BSD License",
+    "authors": [
+        {
+            "name": "Dragonfly Development Inc.",
+            "email": "info@dflydev.com",
+            "homepage": "http://dflydev.com"
+        },
+        {
+            "name": "Beau Simensen",
+            "email": "beau@dflydev.com",
+            "homepage": "http://beausimensen.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "twig/twig": ">1.5,<2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "dflydev\\twig\\extension\\gitHub\\gist": "src"
+        }
+    }
+}

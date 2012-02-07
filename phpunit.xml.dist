@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true" bootstrap="tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="dflydev-github-gist-twig-extension Test Suite">
+            <directory>./tests/dflydev/</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory>./src/dflydev/</directory>
+            <exclude>
+                <directory>./src/dflydev/*/resources</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+</phpunit>
