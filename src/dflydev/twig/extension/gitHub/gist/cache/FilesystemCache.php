@@ -11,21 +11,21 @@
 
 namespace dflydev\twig\extension\gitHub\gist\cache;
 
-class ArrayCache implements ICache
+class FilesystemCache implements ICache
 {
     /**
-     * Internal cache
-     * @var array
+     * Base path
+     * @var string
      */
-    protected $cache = array();
+    protected $basePath;
 
     /**
      * Constructor
-     * @param array $cache Default cache structure
+     * @param string $basePath
      */
-    public function __construct(array $cache = array())
+    public function __construct($basePath)
     {
-        $this->cache = $cache;
+        $this->basePath = $basePath;
     }
 
     /**
@@ -33,7 +33,7 @@ class ArrayCache implements ICache
      */
     public function exists($id)
     {
-        return array_key_exists($id, $this->cache);
+        return file_exists($this->generatePathname($id));
     }
 
     /**
@@ -41,7 +41,7 @@ class ArrayCache implements ICache
      */
     public function get($id)
     {
-        return $this->cache[$id];
+        return unserialize(file_get_contents($this->generatePathname($id)));
     }
 
     /**
@@ -49,7 +49,7 @@ class ArrayCache implements ICache
      */
     public function set($id, $content)
     {
-        $this->cache[$id] = $content;
+        file_put_contents($this->generatePathname($id), serialize($content));
     }
 
     /**
@@ -57,6 +57,16 @@ class ArrayCache implements ICache
      */
     public function expire($id)
     {
-        unset($this->cache[$id]);
+        unlink($this->generatePathname($id));
+    }
+
+    /**
+     * Generate a pathname for an ID
+     * @param string $id
+     * @return string
+     */
+    protected function generatePathname($id)
+    {
+        return $this->basePath.'/'.$id;
     }
 }
