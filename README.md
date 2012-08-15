@@ -17,10 +17,17 @@ Usage
 
 ```php
 <?php
-use dflydev\twig\extension\gitHub\gist\GistTwigExtension;
+use Dflydev\Twig\Extension\GitHubGist\GistTwigExtension;
 $gistTwigExtension = new GistTwigExtension();
 $twig->addExtension($gistTwigExtension);
 ```
+
+Once enabled, gists can be embedded by:
+
+```twig
+{{ gist(3360578) }}
+```
+
 
 Advanced Usage
 --------------
