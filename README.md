@@ -11,6 +11,7 @@ Requirements
  * PHP: >=5.3.2
  * Twig: >=1.5,<2
 
+
 Usage
 -----
 
@@ -24,14 +25,16 @@ $twig->addExtension($gistTwigExtension);
 Advanced Usage
 --------------
 
-The `GistTwigExtension` can optionally accept an `ITransport` and an `ICache`
-implementation. By default `NativePhpTransport` and `ArrayCache` are
-selected if not specified.
+The `GistTwigExtension` can optionally accept a `TransportInterface`
+and a `CacheInterface` implementation. By default `NativePhpTransport`
+and `ArrayCache` are selected if not specified.
+
 
 License
 -------
 
-This library is licensed under the New BSD License - see the LICENSE file for details.
+MIT, see LICENSE.
+
 
 Community
 ---------
