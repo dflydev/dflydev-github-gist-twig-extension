@@ -52,4 +52,12 @@ class FilesystemCacheTest extends \PHPUnit_Framework_TestCase
         $cache->expire('a');
         $this->assertFalse($cache->exists('a'), 'Should no longer find that "a" exists in cache');
     }
+
+    public function testBasePathMissing()
+    {
+        $cache = new FilesystemCache(vfsStream::url('root').'/missing');
+        $cache->set('c', array('test' => 'Hello World'));
+        $content = $cache->get('c');
+        $this->assertEquals('Hello World', $content['test'], 'Should get valid content for "c" from cache');
+    }
 }

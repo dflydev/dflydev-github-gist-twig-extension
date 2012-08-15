@@ -76,6 +76,10 @@ class FilesystemCache implements CacheInterface
      */
     protected function generatePathname($id)
     {
+        if (!file_exists($this->basePath)) {
+            mkdir($this->basePath, 0777, true);
+        }
+
         return $this->basePath.'/'.$id;
     }
 }
