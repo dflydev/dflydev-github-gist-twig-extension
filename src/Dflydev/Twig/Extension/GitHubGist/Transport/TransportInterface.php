@@ -9,12 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\twig\extension\gitHub\gist\transport;
+namespace Dflydev\Twig\Extension\GitHubGist\Transport;
 
-interface ITransport
+/**
+ * Transport Interface.
+ *
+ * @author Beau Simensen <beau@dflydev.com>
+ */
+interface TransportInterface
 {
     /**
      * Fetch the contents of a gist
+     *
      * @param array $id
      */
     public function fetchGist($id);

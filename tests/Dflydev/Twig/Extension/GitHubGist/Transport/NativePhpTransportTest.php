@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-use dflydev\twig\extension\gitHub\gist\transport\NativePhpTransport;
+namespace Dflydev\Twig\Extension\GitHubGist\Transport;
 
-namespace dflydev\twig\extension\gitHub\gist\transport;
+use Dflydev\Twig\Extension\GitHubGist\Transport\NativePhpTransport;
 
 class NativePhpTransportTest extends \PHPUnit_Framework_TestCase
 {

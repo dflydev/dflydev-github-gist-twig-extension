@@ -1,6 +1,5 @@
 {
     "name": "dflydev/github-gist-twig-extension",
-    "type": "library",
     "description": "GitHub Gist Twig Extension",
     "homepage": "http://github.com/dflydev/dflydev-github-gist-twig-extension",
     "keywords": ["github", "gist", "twig", "extension"],
@@ -19,11 +18,14 @@
     ],
     "require": {
         "php": ">=5.3.2",
-        "twig/twig": ">1.5,<2.0"
+        "twig/twig": ">=1.9.1,<2.0-dev"
+    },
+    "require-dev": {
+        "mikey179/vfsStream": "1.*"
     },
     "autoload": {
         "psr-0": {
-            "dflydev\\twig\\extension\\gitHub\\gist": "src"
+            "Dflydev\\Twig\\Extension\\GitHubGist": "src"
         }
     },
     "extra": {

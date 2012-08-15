@@ -1,9 +1,22 @@
 {
-    "hash": "7324287743ae68d22d1cca16cb98cb66",
+    "hash": "3b92b1c2c02188e520f7c8d2f2ba1e9c",
     "packages": [
         {
-            "package": "twig\/twig",
-            "version": "1.7.0-dev"
+            "package": "twig/twig",
+            "version": "v1.9.1"
         }
+    ],
+    "packages-dev": [
+        {
+            "package": "mikey179/vfsStream",
+            "version": "v1.0.0"
+        }
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
     ]
 }

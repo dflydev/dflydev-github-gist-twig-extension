@@ -9,19 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\twig\extension\gitHub\gist\cache;
+namespace Dflydev\Twig\Extension\GitHubGist\Cache;
 
-class FilesystemCache implements ICache
+/**
+ * Filesystem Cache.
+ *
+ * @author Beau Simensen <beau@dflydev.com>
+ */
+class FilesystemCache implements CacheInterface
 {
     /**
      * Base path
+     *
      * @var string
      */
     protected $basePath;
 
     /**
      * Constructor
-     * @param string $basePath
+     *
+     * @param string $basePath Base path
      */
     public function __construct($basePath)
     {
@@ -29,7 +36,7 @@ class FilesystemCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function exists($id)
     {
@@ -37,7 +44,7 @@ class FilesystemCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function get($id)
     {
@@ -45,7 +52,7 @@ class FilesystemCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function set($id, $content)
     {
@@ -53,7 +60,7 @@ class FilesystemCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function expire($id)
     {
@@ -62,7 +69,9 @@ class FilesystemCache implements ICache
 
     /**
      * Generate a pathname for an ID
-     * @param string $id
+     *
+     * @param string $id ID
+     *
      * @return string
      */
     protected function generatePathname($id)

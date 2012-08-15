@@ -9,10 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\tests\twig\extension\gitHub\gist;
+namespace Dflydev\Twig\Extension\GitHubGist;
 
-use dflydev\twig\extension\gitHub\gist\GistTwigExtension;
+use Dflydev\Twig\Extension\GitHubGist\Cache\ArrayCache;
+use Dflydev\Twig\Extension\GitHubGist\GistTwigExtension;
+use Dflydev\Twig\Extension\GitHubGist\Transport\NativePhpTransport;
 
+/**
+ * GitHub Gist Twig Extension Test.
+ *
+ * @author Beau Simensen <beau@dflydev.com>
+ */
 class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetFunctions()
@@ -21,7 +28,7 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
         $functions = $gistTwigExtension->getFunctions();
         $this->assertTrue(array_key_exists('gist', $functions), 'Should find "gist" to be a valid function');
     }
-    
+
     public function testGetName()
     {
         $gistTwigExtension = new GistTwigExtension();
@@ -30,8 +37,8 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGistCacheSingle()
     {
-        $transport = $this->getMock('dflydev\twig\extension\gitHub\gist\transport\ITransport');
-        $cache = $this->getMock('dflydev\twig\extension\gitHub\gist\cache\ICache');
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
         $cache
             ->expects($this->once())
             ->method('exists')
@@ -48,13 +55,13 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGistTransportSingle()
     {
-        $transport = $this->getMock('dflydev\twig\extension\gitHub\gist\transport\ITransport');
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
         $transport
             ->expects($this->once())
             ->method('fetchGist')
             ->with($this->equalTo('1234'))
             ->will($this->returnValue($this->getDefaultPayloadSingle()));
-        $cache = $this->getMock('dflydev\twig\extension\gitHub\gist\cache\ICache');
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
         $cache
             ->expects($this->once())
             ->method('exists')
@@ -63,11 +70,11 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
         $gistTwigExtension = new GistTwigExtension($transport, $cache);
         $this->assertEquals($this->getDefaultPayloadSingleFixture(), $gistTwigExtension->gist(1234), 'Should get valid HTML response');
     }
-    
+
     public function testGistCacheMultiple()
     {
-        $transport = $this->getMock('dflydev\twig\extension\gitHub\gist\transport\ITransport');
-        $cache = $this->getMock('dflydev\twig\extension\gitHub\gist\cache\ICache');
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
         $cache
             ->expects($this->once())
             ->method('exists')
@@ -81,11 +88,11 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
         $gistTwigExtension = new GistTwigExtension($transport, $cache);
         $this->assertEquals($this->getDefaultPayloadMultipleFixture(), $gistTwigExtension->gist(1234), 'Should get valid HTML response');
     }
-    
+
     public function testGistCacheMultipleWithFileSpecified()
     {
-        $transport = $this->getMock('dflydev\twig\extension\gitHub\gist\transport\ITransport');
-        $cache = $this->getMock('dflydev\twig\extension\gitHub\gist\cache\ICache');
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
         $cache
             ->expects($this->once())
             ->method('exists')
@@ -102,8 +109,8 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
 
     public function testGistCacheEmpty()
     {
-        $transport = $this->getMock('dflydev\twig\extension\gitHub\gist\transport\ITransport');
-        $cache = $this->getMock('dflydev\twig\extension\gitHub\gist\cache\ICache');
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
         $cache
             ->expects($this->once())
             ->method('exists')
@@ -116,6 +123,39 @@ class GistTwigExtensionTest extends \PHPUnit_Framework_TestCase
             ->will($this->returnValue($this->getEmptyPayload()));
         $gistTwigExtension = new GistTwigExtension($transport, $cache);
         $this->assertEquals('', $gistTwigExtension->gist(1234), 'Should get empty HTML response');
+    }
+
+    public function testDefaultCache()
+    {
+        $gistTwigExtension = new GistTwigExtension;
+        $this->assertTrue($gistTwigExtension->cache() instanceof ArrayCache);
+    }
+
+    public function testDefaultTransport()
+    {
+        $gistTwigExtension = new GistTwigExtension;
+        $this->assertTrue($gistTwigExtension->transport() instanceof NativePhpTransport);
+    }
+
+    public function testSetCacheAndTransport()
+    {
+        $transport = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Transport\TransportInterface');
+        $transport
+            ->expects($this->once())
+            ->method('fetchGist')
+            ->with($this->equalTo('1234'))
+            ->will($this->returnValue($this->getDefaultPayloadSingle()));
+        $cache = $this->getMock('Dflydev\Twig\Extension\GitHubGist\Cache\CacheInterface');
+        $cache
+            ->expects($this->once())
+            ->method('exists')
+            ->with($this->equalTo('1234'))
+            ->will($this->returnValue(false));
+
+        $gistTwigExtension = new GistTwigExtension;
+        $gistTwigExtension->setTransport($transport);
+        $gistTwigExtension->setCache($cache);
+        $this->assertEquals($this->getDefaultPayloadSingleFixture(), $gistTwigExtension->gist(1234), 'Should get valid HTML response');
     }
 
     protected function getDefaultPayloadSingleFixture()
@@ -145,7 +185,7 @@ EOT
 EOT
     ;
     }
-    
+
     protected function getDefaultPayloadMultiple()
     {
         return array(

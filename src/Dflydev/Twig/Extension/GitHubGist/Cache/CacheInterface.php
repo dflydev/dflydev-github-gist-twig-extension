@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\twig\extension\gitHub\gist\cache;
+namespace Dflydev\Twig\Extension\GitHubGist\Cache;
 
-interface ICache
+interface CacheInterface
 {
     /**
      * Determine if a gist exists

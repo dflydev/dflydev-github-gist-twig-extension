@@ -9,18 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\twig\extension\gitHub\gist\transport;
+namespace Dflydev\Twig\Extension\GitHubGist\Transport;
 
-class NativePhpTransport implements ITransport
+/**
+ * Native PHP Transport
+ *
+ * @author Beau Simensen <beau@dflydev.com>
+ */
+class NativePhpTransport implements TransportInterface
 {
     /**
      * Base URI
+     *
      * @var string
      */
     protected $baseUri;
 
     /**
      * Constructor
+     *
      * @param string $baseUri
      */
     public function __construct($baseUri = 'https://api.github.com/gists/')
@@ -29,11 +36,12 @@ class NativePhpTransport implements ITransport
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function fetchGist($id)
     {
         $response = file_get_contents($this->baseUri.$id);
+
         return json_decode($response, true);
     }
 }

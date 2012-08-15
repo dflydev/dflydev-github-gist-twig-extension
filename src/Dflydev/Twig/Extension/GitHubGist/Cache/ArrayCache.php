@@ -9,12 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\twig\extension\gitHub\gist\cache;
+namespace Dflydev\Twig\Extension\GitHubGist\Cache;
 
-class ArrayCache implements ICache
+/**
+ * Array Cache.
+ *
+ * @author Beau Simensen <beau@dflydev.com>
+ */
+class ArrayCache implements CacheInterface
 {
     /**
      * Internal cache
+     *
      * @var array
      */
     protected $cache = array();
@@ -29,7 +35,7 @@ class ArrayCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function exists($id)
     {
@@ -37,7 +43,7 @@ class ArrayCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function get($id)
     {
@@ -45,7 +51,7 @@ class ArrayCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function set($id, $content)
     {
@@ -53,7 +59,7 @@ class ArrayCache implements ICache
     }
 
     /**
-     * @{inheritdoc}
+     * {@inheritdoc}
      */
     public function expire($id)
     {

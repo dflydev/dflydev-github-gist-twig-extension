@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace dflydev\tests\twig\extension\gitHub\gist\cache;
+namespace Dflydev\Twig\Extension\GitHubGist\Cache;
 
-use dflydev\twig\extension\gitHub\gist\cache\ArrayCache;
+use Dflydev\Twig\Extension\GitHubGist\Cache\ArrayCache;
 
 class ArrayCacheTest extends \PHPUnit_Framework_TestCase
 {
