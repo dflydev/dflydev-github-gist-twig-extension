@@ -2,9 +2,9 @@
     "name": "dflydev/github-gist-twig-extension",
     "type": "library",
     "description": "GitHub Gist Twig Extension",
-    "homepage": "http://github.com/dflydev/dflydev-gitHub-gist-twig-extension",
+    "homepage": "http://github.com/dflydev/dflydev-github-gist-twig-extension",
     "keywords": ["github", "gist", "twig", "extension"],
-    "license": "New BSD License",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dragonfly Development Inc.",
@@ -24,6 +24,11 @@
     "autoload": {
         "psr-0": {
             "dflydev\\twig\\extension\\gitHub\\gist": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
         }
     }
 }
